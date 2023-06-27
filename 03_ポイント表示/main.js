@@ -32,7 +32,7 @@ map.on('click', 'facility_point', function (e) {
     var name = e.features[0].properties.P27_005;
 
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] = e.lngLat.lng > coordinates[0] ? 360 : -360;
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
     // ポップアップを表示する
     new maplibregl.Popup({
