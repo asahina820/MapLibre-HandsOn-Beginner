@@ -6,11 +6,9 @@ var map = new maplibregl.Map({
 });
 
 // ポイントデータを表示する
-map.on('load', function () {
-  map.loadImage('./img/icon.png', function (error, image) {
-    if (error) throw error;
-    map.addImage('facility_icon', image);
-  });
+map.on('load', async () => {
+  const iconImage = await map.loadImage('./img/icon.png');
+  map.addImage('facility_icon', iconImage.data);
   map.addSource('facility_point', {
     type: 'geojson',
     data: './data/point.geojson',
@@ -27,7 +25,7 @@ map.on('load', function () {
 });
 
 // 地物クリック時にポップアップを表示する
-map.on('click', 'facility_point', function (e) {
+map.on('click', 'facility_point', (e) => {
   var coordinates = e.features[0].geometry.coordinates.slice();
   var name = e.features[0].properties.P27_005;
 
