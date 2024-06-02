@@ -6,7 +6,7 @@ var map = new maplibregl.Map({
 });
 
 // ラインデータを表示する
-map.on('load', function () {
+map.on('load', () => {
   map.addSource('tokyo_bus', {
     type: 'geojson',
     data: './data/line.geojson',
