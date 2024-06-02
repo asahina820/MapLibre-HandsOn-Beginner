@@ -6,7 +6,7 @@ var map = new maplibregl.Map({
 });
 
 // ポリゴンデータを表示する
-map.on('load', function () {
+map.on('load', () => {
   map.addSource('industrial_area', {
     type: 'geojson',
     data: './data/polygon.geojson',
@@ -24,7 +24,7 @@ map.on('load', function () {
 });
 
 // 地物クリック時にポップアップを表示する
-map.on('click', 'industrial_area', function (e) {
+map.on('click', 'industrial_area', (e) => {
   var name = e.features[0].properties.L05_002;
   // ポップアップを表示する
   new maplibregl.Popup({
